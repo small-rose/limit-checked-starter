@@ -18,7 +18,7 @@ public @interface LimitChecked {
     /**
      * global uniqueness cache key, you can user the signature ,do not repeat
      * 用作缓存key，建议应用内全局唯一
-     * @return
+     * @return String
      */
     @NonNull
     String name() default  "default" ;
@@ -26,34 +26,34 @@ public @interface LimitChecked {
     /**
      * 方法限制标记，默认开启限制
      * the method limit flag
-     * @return
+     * @return boolean
      */
     boolean limit() default true;
 
     /**
      * 方法限制一个时间窗口期，单位是秒
-     * @return
+     * @return long
      */
     long second() default 0;
     /**
      * 方法限制一个时间窗口期内限定次数
-     * @return
+     * @return long
      */
     long totalCount() default 0;
     /**
      * 是否开启限定后的等待延迟
-     * @return
+     * @return boolean
      */
     boolean waitEnable() default false;
     /**
      * 启限定后的等待延迟时间，仅在 waitEnable = true 的时候生效
-     * @return
+     * @return long
      */
     long limitWaiting() default 5;
 
     /**
      * 是否调用成功才计算次数
-     * @return
+     * @return boolean
      */
     boolean onlySuccessCount() default false;
 }
@@ -114,6 +114,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
     /**
      * use @LimitChecked
+     * 访问该接口限制：10秒钟内只能访问2次
      * @return
      */
     @RequestMapping("/test")
@@ -123,8 +124,21 @@ public class DemoController {
     }
 
     /**
+     * use @LimitChecked just limit on call success
+     * when exception happened ,the limit numbers not count
+     * 访问该接口限制：10秒内，限制成功访问2次
+     * @return
+     */
+    @RequestMapping("/onSuccess")
+    @LimitChecked(name = "success", second = 10, totalCount = 2, onlySuccessCount = true)
+    public String success(){
+        return "ok";
+    }
+
+    /**
      * when no params
      * use global application.properties
+     * 该接口的限制参数都没有配置，则使用 application.properties 全局配置
      * @return
      */
     @RequestMapping("/test2")
