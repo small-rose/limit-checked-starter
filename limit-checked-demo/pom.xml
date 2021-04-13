@@ -24,10 +24,28 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+<!--
+
         <dependency>
             <groupId>cn.xiaocai.limit</groupId>
             <artifactId>limit-checked-spring-boot-starter</artifactId>
             <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+-->
+
+<!--
+
+     <dependency>
+            <groupId>cn.xiaocai.limit</groupId>
+            <artifactId>limit-checked-spring-boot-starter-v2</artifactId>
+            <version>1.0.2-SNAPSHOT</version>
+        </dependency>
+-->
+
+        <dependency>
+            <groupId>cn.xiaocai.limit</groupId>
+            <artifactId>limit-checked-spring-boot-starter-v3</artifactId>
+            <version>1.0.3-SNAPSHOT</version>
         </dependency>
 
         <dependency>
@@ -38,6 +56,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>cn.xiaocai.limit</groupId>
+            <artifactId>limit-checked-spring-boot-starter-v3</artifactId>
+            <version>1.0.3-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
