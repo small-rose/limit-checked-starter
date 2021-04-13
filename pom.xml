@@ -23,6 +23,8 @@
     <modules>
         <module>limit-checked-demo</module>
         <module>limit-checked-spring-boot-starter</module>
+        <module>limit-checked-spring-boot-starter-v2</module>
+        <module>limit-checked-spring-boot-starter-v3</module>
     </modules>
 
     <build>
