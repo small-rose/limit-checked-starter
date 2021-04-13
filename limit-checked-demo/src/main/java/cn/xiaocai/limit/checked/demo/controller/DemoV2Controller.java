@@ -1,7 +1,6 @@
 package cn.xiaocai.limit.checked.demo.controller;
 
-
-import cn.xiaocai.limit.checked.core.annotation.LimitChecked;
+import cn.xiaocai.limit.core.v2.annotation.LimitChecked;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,13 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Slf4j
 @RestController
-public class DemoController {
+public class DemoV2Controller {
     /**
      * use @LimitChecked
      * 访问该接口限制：10秒钟内只能访问2次
      * @return String
      */
-    @RequestMapping("/test")
+    @RequestMapping("/v2/test")
     @LimitChecked(name = "test", second = 10, totalCount = 2)
     public String test(){
         return "ok";
